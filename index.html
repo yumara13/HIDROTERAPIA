@@ -1,1 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#174c3c">
 
+  <title>Fangoterapia e Hidroterapia | Guía visual comparativa</title>
+
+  <style>
+    :root {
+      --verde: #174c3c;
+      --verde-claro: #e8f1eb;
+      --turquesa: #bfe3dc;
+      --arena: #f5efe3;
+      --tierra: #956b46;
+      --texto: #26352f;
+      --muted: #60716a;
+      --blanco: #ffffff;
+      --sombra: 0 12px 35px rgba(27, 57, 46, 0.10);
+      --radio: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: #fbfaf6;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--verde);
+    }
+
+    .barra-superior {
+      background: var(--verde);
+      color: var(--blanco);
+      padding: 10px 5%;
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid #e6e8e2;
+    }
+
+    .encabezado {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .institucion {
+      color: var(--verde);
+      font-weight: 800;
+      line-height: 1.25;
+      font-size: 1.05rem;
+    }
+
+    .institucion small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e6e8e2;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-contenido {
+      max-width: 1180px;
+      margin: auto;
+      padding: 10px 24px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 8px 13px;
+      border-radius: 999px;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: var(--verde-claro);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 28px 24px 60px;
+    }
+
+    .portada {
+      padding: clamp(30px, 7vw, 76px);
+      border-radius: 28px;
+      color: var(--blanco);
+      background:
+        linear-gradient(120deg, rgba(18, 63, 48, 0.96), rgba(35, 112, 91, 0.85)),
+        radial-gradient(circle at 90% 20%, #c7e4d8, transparent 40%);
+      box-shadow: var(--sombra);
+    }
+
+    .etiqueta {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 18px 0 12px;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      line-height: 1.1;
+    }
+
+    .portada p {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: 1.12rem;
+      color: #edf7f1;
+    }
+
+    .boton {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--arena);
+      color: var(--verde);
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    section {
+      scroll-margin-top: 78px;
+      margin-top: 54px;
+    }
+
+    .titulo-seccion {
+      margin-bottom: 20px;
+    }
+
+    .titulo-seccion h2 {
+      margin: 0;
+      color: var(--verde);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+    }
+
+    .titulo-seccion p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .rejilla {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tarjeta {
+      background: var(--blanco);
+      padding: 22px;
+      border: 1px solid #e8e9e3;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+    }
+
+    .tarjeta h3 {
+      margin-top: 0;
+      color: var(--verde);
+    }
+
+    .tarjeta.destacada {
+      background: var(--verde-claro);
+    }
+
+    .nota {
+      padding: 18px 20px;
+      border-left: 5px solid var(--tierra);
+      background: var(--arena);
+      border-radius: 10px;
+    }
+
+    .propiedades {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .propiedad {
+      padding: 16px;
+      border-radius: 14px;
+      background: #f5f8f5;
+    }
+
+    .propiedad strong {
+      display: block;
+      color: var(--verde);
+    }
+
+    .tabla-contenedor {
+      overflow-x: auto;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      background: var(--blanco);
+    }
+
+    th, td {
+      padding: 15px 17px;
+      border-bottom: 1px solid #e7e9e4;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--blanco);
+      background: var(--verde);
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f6f8f5;
+    }
+
+    .fuentes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .fuente {
+      padding: 16px 18px;
+      background: var(--blanco);
+      border: 1px solid #e8e9e3;
+      border-radius: 14px;
+    }
+
+    .fuente strong {
+      color: var(--verde);
+    }
+
+    .fuente a {
+      overflow-wrap: anywhere;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .galeria figure {
+      margin: 0;
+      padding: 10px;
+      background: var(--blanco);
+      border: 1px solid #e8e9e3;
+      border-radius: 16px;
+      box-shadow: var(--sombra);
+    }
+
+    .galeria img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      background: #f4f4f0;
+      border-radius: 10px;
+    }
+
+    .galeria figcaption {
+      padding: 9px 3px 2px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding: 28px 20px;
+      color: #eaf2ed;
+      background: #123d30;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    @media (max-width: 800px) {
+      .galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .encabezado {
+        padding: 14px 16px;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .institucion {
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 18px 15px 42px;
+      }
+
+      .rejilla,
+      .propiedades {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria img {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="barra-superior">
+    MATERIAL EDUCATIVO · FISIOTERAPIA
+  </div>
+
+  <header>
+    <div class="encabezado">
+      <!-- Guarda el logo como logo.png junto a este archivo -->
+      <img class="logo" src="TECBA.jpeg" alt="Logo del Tecnológico Boliviano Alemán"
+           onerror="this.style.display='none'">
+      <div class="institucion">
+        INSTITUTO TECNOLÓGICO BOLIVIANO ALEMÁN
+        <small>Guía visual comparativa de técnicas complementarias</small>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <div class="nav-contenido">
+      <a href="#inicio">Inicio</a>
+      <a href="#fangoterapia">Fangoterapia</a>
+      <a href="#hidroterapia">Hidroterapia</a>
+      <a href="#comparacion">Comparación</a>
+      <a href="#fuentes">Fuentes</a>
+      <a href="#galeria">Galería</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="portada" id="inicio">
+      <span class="etiqueta">FISIOTERAPIA · GUÍA EDUCATIVA</span>
+      <h1>Fangoterapia e hidroterapia</h1>
+      <p>
+        Dos técnicas complementarias: fundamentos, aplicaciones estudiadas,
+        diferencias y precauciones.
+      </p>
+      <a class="boton" href="#comparacion">Explorar la comparación</a>
+    </section>
+
+    <section>
+      <div class="nota">
+        <strong>¿Para qué sirve esta guía?</strong>
+        <p>
+          Para comprender qué caracteriza a cada técnica, reconocer en qué condiciones
+          se han investigado y evitar confundir sus resultados. Está dirigida principalmente
+          a estudiantes de Fisioterapia y resume la revisión documental del proyecto.
+        </p>
+        <strong>Importante:</strong> el material tiene fines educativos. No es un protocolo
+        de tratamiento, no indica dosis ni temperaturas y no sustituye la valoración
+        individual ni la supervisión de profesionales.
+      </div>
+    </section>
+
+    <section id="fangoterapia">
+      <div class="titulo-seccion">
+        <h2>Fangoterapia</h2>
+        <p>Uso terapéutico de lodos o peloides preparados.</p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <h3>¿Qué es?</h3>
+          <p>
+            Es una técnica que emplea lodos terapéuticos o peloides preparados.
+            En el documento base se estudian principalmente la aplicación de lodo
+            y los baños de lodo.
+          </p>
+        </article>
+
+        <article class="tarjeta destacada">
+          <h3>Aplicaciones investigadas</h3>
+          <p>
+            Las publicaciones revisadas se centran principalmente en personas con
+            osteoartritis de rodilla. Describen posibles mejoras a corto plazo en dolor,
+            rigidez y función articular, según los estudios incluidos.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Ejemplo de evidencia</h3>
+          <p>
+            Liu et al. (2013) revisó estudios sobre tratamiento con lodo en osteoartritis
+            de rodilla. El documento base informa siete estudios comparativos y 410 participantes.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Precauciones y límites</h3>
+          <p>
+            Deben considerarse la higiene, la tolerancia cutánea, la temperatura y la
+            valoración individual. Los resultados no deben generalizarse a otras patologías
+            ni a cualquier tipo de peloide.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="hidroterapia">
+      <div class="titulo-seccion">
+        <h2>Hidroterapia</h2>
+        <p>Uso terapéutico del agua y de sus propiedades físicas en rehabilitación.</p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <h3>¿Qué es?</h3>
+          <p>
+            Puede incluir distintas modalidades. Sin embargo, las investigaciones revisadas
+            en el proyecto se centran principalmente en el ejercicio acuático.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Propiedades físicas del agua</h3>
+          <div class="propiedades">
+            <div class="propiedad">
+              <strong>Flotación</strong>
+              Disminuye la carga aparente que soportan las articulaciones al estar sumergido.
+            </div>
+            <div class="propiedad">
+              <strong>Presión hidrostática</strong>
+              Ejerce presión alrededor del cuerpo; su efecto varía con la profundidad.
+            </div>
+            <div class="propiedad">
+              <strong>Resistencia y viscosidad</strong>
+              El agua se opone al movimiento y puede utilizarse para graduar el esfuerzo.
+            </div>
+            <div class="propiedad">
+              <strong>Temperatura</strong>
+              Puede influir en la comodidad y respuesta corporal; debe controlarse según la persona.
+            </div>
+          </div>
+        </article>
+
+        <article class="tarjeta destacada">
+          <h3>Aplicaciones investigadas</h3>
+          <p>
+            Las publicaciones revisadas incluyen ejercicio acuático en personas con
+            osteoartritis, dolor lumbar, adultos mayores y otros trastornos musculoesqueléticos.
+            Algunos trabajos describen posibles mejoras en dolor, discapacidad o funcionamiento
+            físico, dependiendo de la población y del programa estudiado.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Precauciones y límite importante</h3>
+          <p>
+            Deben considerarse la seguridad del entorno acuático, la higiene y calidad del agua,
+            el acceso y salida de la piscina, la supervisión y la condición individual.
+            Los resultados del ejercicio acuático no representan automáticamente todas las
+            modalidades de hidroterapia.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="comparacion">
+      <div class="titulo-seccion">
+        <h2>Comparación directa</h2>
+        <p>
+          Aunque ambas son técnicas complementarias, utilizan medios distintos y sus
+          investigaciones no deben mezclarse.
+        </p>
+      </div>
+
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Fangoterapia</th>
+              <th>Hidroterapia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Medio utilizado</td>
+              <td>Lodos terapéuticos o peloides preparados.</td>
+              <td>Agua y sus propiedades físicas.</td>
+            </tr>
+            <tr>
+              <td>Fundamento</td>
+              <td>Características del peloide y condiciones térmicas de aplicación.</td>
+              <td>Flotación, presión hidrostática, viscosidad, resistencia y temperatura.</td>
+            </tr>
+            <tr>
+              <td>Modalidad más estudiada</td>
+              <td>Aplicación de lodo y baño de lodo.</td>
+              <td>Ejercicio acuático.</td>
+            </tr>
+            <tr>
+              <td>Población investigada principalmente</td>
+              <td>Personas con osteoartritis de rodilla.</td>
+              <td>Personas con osteoartritis, dolor lumbar, adultos mayores y otros trastornos musculoesqueléticos, según cada estudio.</td>
+            </tr>
+            <tr>
+              <td>Resultados descritos</td>
+              <td>Posibles mejoras a corto plazo en dolor, rigidez y función articular.</td>
+              <td>Posibles mejoras en dolor, discapacidad o funcionamiento físico, según el programa.</td>
+            </tr>
+            <tr>
+              <td>Precauciones</td>
+              <td>Higiene, tolerancia cutánea, temperatura y valoración individual.</td>
+              <td>Higiene del agua, seguridad del entorno, supervisión y valoración individual.</td>
+            </tr>
+            <tr>
+              <td>Limitación principal</td>
+              <td>No generalizar a otras patologías ni a cualquier tipo de peloide.</td>
+              <td>La evidencia sobre ejercicio acuático no equivale a evidencia sobre todas las técnicas acuáticas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="fuentes">
+      <div class="titulo-seccion">
+        <h2>Fuentes para consultar</h2>
+        <p>
+          Esta selección corresponde a las publicaciones identificadas en el documento base.
+          Consulta los artículos originales para revisar población, métodos, resultados y limitaciones.
+        </p>
+      </div>
+
+      <div class="fuentes">
+        <div class="fuente">
+          <strong>Fangoterapia · Liu et al. (2013).</strong>
+          Revisión de estudios sobre tratamiento con lodo en osteoartritis de rodilla.
+          El documento base informa siete estudios comparativos y 410 participantes.
+        </div>
+
+        <div class="fuente">
+          <strong>Fangoterapia · Fraioli, A., et al. (2018).</strong>
+          <em>Efficacy of spa therapy, mud-pack therapy, balneotherapy, and mud-bath therapy
+          in the management of knee osteoarthritis: A systematic review.</em>
+          BioMed Research International, 2018, 1042576.
+          <a href="https://doi.org/10.1155/2018/1042576" target="_blank" rel="noopener">
+            https://doi.org/10.1155/2018/1042576
+          </a>
+        </div>
+
+        <div class="fuente">
+          <strong>Fangoterapia · Hou, C., et al. (2020).</strong>
+          <em>The short-term efficacy of mud therapy for knee osteoarthritis: A meta-analysis.</em>
+          Medicine, 99(17), e19761.
+          <a href="https://doi.org/10.1097/MD.0000000000019761" target="_blank" rel="noopener">
+            https://doi.org/10.1097/MD.0000000000019761
+          </a>
+        </div>
+
+        <div class="fuente">
+          <strong>Hidroterapia · Waller, B., et al. (2016).</strong>
+          <em>The effect of aquatic exercise on physical functioning in the older adult:
+          A systematic review with meta-analysis.</em>
+          Age and Ageing, 45(5), 593–601.
+          <a href="https://doi.org/10.1093/ageing/afw102" target="_blank" rel="noopener">
+            https://doi.org/10.1093/ageing/afw102
+          </a>
+        </div>
+
+        <div class="fuente">
+          <strong>Hidroterapia · Bartels, E. M., et al. (2016).</strong>
+          <em>Aquatic exercise for the treatment of knee and hip osteoarthritis.</em>
+          Cochrane Database of Systematic Reviews, 2016(3), CD005523.
+        </div>
+
+        <div class="fuente">
+          <strong>Hidroterapia · Shi et al. (2018).</strong>
+          Publicación sobre ejercicio acuático incluida en la revisión documental del proyecto.
+          Consultar la ficha bibliográfica del documento base para los datos completos.
+        </div>
+
+        <div class="fuente">
+          <strong>Hidroterapia · Wang et al. (2023).</strong>
+          Revisión sistemática y metaanálisis sobre ejercicio acuático en trastornos
+          musculoesqueléticos crónicos.
+          <a href="https://doi.org/10.1186/s13018-023-04417-w" target="_blank" rel="noopener">
+            https://doi.org/10.1186/s13018-023-04417-w
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="titulo-seccion">
+        <h2>Galería de imágenes</h2>
+        <p>Las imágenes se ajustan dentro de su marco para verse completas, sin recortes.</p>
+      </div>
+
+      <div class="galeria">
+        <figure>
+          <img src="IMG1.jpeg" alt="Imagen educativa 1" loading="lazy">
+          <figcaption>Imagen 1</figcaption>
+        </figure>
+        <figure>
+          <img src="IMG2.jpeg" alt="Imagen educativa 2" loading="lazy">
+          <figcaption>Imagen 2</figcaption>
+        </figure>
+        <figure>
+          <img src="IMG3.jpeg" alt="Imagen educativa 3" loading="lazy">
+          <figcaption>Imagen 3</figcaption>
+        </figure>
+        <figure>
+          <img src="IMG4.jpeg" alt="Imagen educativa 4" loading="lazy">
+          <figcaption>Imagen 4</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Instituto Tecnológico Boliviano Alemán</strong></p>
+    <p>Material educativo para estudiantes de Fisioterapia</p>
+    <p>© <span id="anio"></span></p>
+  </footer>
+
+  <script>
+    // Actualiza automáticamente el año del pie de página.
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
